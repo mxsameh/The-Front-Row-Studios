@@ -14,14 +14,14 @@ const Welcome = () => {
       <div className={styles.welcome_right}>
         <h1 className={styles.title}>WELCOME TO THE FRONT ROW.</h1>
         <p className={styles.desc}>
-          In the finest fabrics & the sexiest silhouettes, we present to you the
-          power of sensuality through our first Fall/Winter collection - "THE
-          FRONT ROW STUDIOS". Following the female body & gaze, this collection
-          embodies a sense of luxury, confidence & indulgence.
+          IN THE FINEST FABRICS & THE SEXIEST SILHOUETTES, WE PRESENT TO YOU THE
+          POWER OF SENSUALITY THROUGH OUR FIRST FALL/WINTER COLLECTION - "THE
+          FRONT ROW STUDIOS". FOLLOWING THE FEMALE BODY & GAZE, THIS COLLECTION
+          EMBODIES A SENSE OF LUXURY, CONFIDENCE & INDULGENCE.
           <span className={styles.desc2}>
-            Intertwined with our statement pieces are timeless essentials that
-            echo through eras. Handmade & tailored to perfection, these pieces
-            are made just for you.
+            INTERTWINED WITH OUR STATEMENT PIECES ARE TIMELESS ESSENTIALS THAT
+            ECHO THROUGH ERAS. HANDMADE & TAILORED TO PERFECTION, THESE PIECES
+            ARE MADE JUST FOR YOU.
           </span>
         </p>
       </div>

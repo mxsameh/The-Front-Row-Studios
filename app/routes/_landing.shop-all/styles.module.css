@@ -4,6 +4,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   flex-wrap: wrap;
+  @media (width > 1300px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 .collection {
   padding: 24px;
@@ -16,12 +19,15 @@
 .collection_title {
   font-family: 'Clash Display';
   font-size: 24px;
-  font-weight: bolder;
+  font-weight: bold;
 }
 .collection_desc {
+  font-family: 'Clash Display';
+  font-weight: 500;
   font-size: 14px;
   font-weight: 500;
   text-align: justify;
+  line-height: 20px;
 }
 .productContainer {
   flex-basis: 25%;

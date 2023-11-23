@@ -17,11 +17,11 @@ const HomePage = (props) => {
             THE FRONT ROW STUDIOS: WHERE COOL MEETS CONFIDENCE
           </h1>
           <p className={styles.desc}>
-            THE ultimate destination for strong, fun, effortlessly sexy women -
-            worldwide. each collection is an experience, a world on it’s own
-            with you at the center of it. experience & enjoy the relationship
-            between statement pieces & timeless must haves. welcome to the front
-            row.
+            THE ULTIMATE DESTINATION FOR STRONG, FUN, EFFORTLESSLY SEXY WOMEN -
+            WORLDWIDE. EACH COLLECTION IS AN EXPERIENCE, A WORLD ON IT’S OWN
+            WITH YOU AT THE CENTER OF IT. EXPERIENCE & ENJOY THE RELATIONSHIP
+            BETWEEN STATEMENT PIECES & TIMELESS MUST HAVES. WELCOME TO THE FRONT
+            ROW.
           </p>
           <FR_Logo className={styles.logo} />
         </div>
