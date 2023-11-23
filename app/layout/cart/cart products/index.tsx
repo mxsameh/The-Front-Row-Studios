@@ -7,7 +7,11 @@ const CartProductsList = ({products}) => {
       {products.map((product) => (
         <div key={product.id} className={styles.product}>
           <div className={styles.product_image}>
-            <Image data={product.image} sizes="(min-width: 120px) 30%" />
+            <Image
+              data={product.image}
+              sizes="(min-width: 120px) 30%"
+              className={styles.img}
+            />
           </div>
           {/* PRODUCT DETAILS */}
           <div className={styles.product_details}>

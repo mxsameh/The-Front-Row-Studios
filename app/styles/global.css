@@ -31,6 +31,12 @@
   src: url(../assets/fonts/OpenSans.ttf);
 }
 
+@font-face {
+  font-family: 'Clash Display';
+  font-style: normal;
+  src: url(../assets/fonts/ClashDisplay.ttf);
+}
+
 /*
 * --------------------------------------------------
 * Animations

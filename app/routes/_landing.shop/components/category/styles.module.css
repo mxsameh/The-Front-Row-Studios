@@ -27,6 +27,8 @@
   @media (width > 860px) {
     flex-basis: calc(100% / 3);
     max-width: calc(100% / 3);
+    gap: 16px;
+    align-items: flex-start;
   }
 }
 .category_title {
@@ -34,11 +36,17 @@
   text-align: left;
   color: black;
   text-transform: uppercase;
+  @media (width > 860px) {
+    font-family: 'Clash Display';
+  }
 }
 .category_description {
-  /* text-align: justify; */
   font-style: italic;
   color: #777;
+  @media (width > 860px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
 }
 .slidercontainer {
 }
