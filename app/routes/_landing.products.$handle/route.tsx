@@ -1,12 +1,12 @@
 import {useLoaderData} from '@remix-run/react';
-import {LoaderArgs, json} from '@shopify/remix-oxygen';
+import {LoaderFunctionArgs, json} from '@shopify/remix-oxygen';
 import Product_Page from './page';
 import formatProduct from '~/utils/formatProduct';
 
 /**
  * Loader
  */
-export async function loader({context, params, request}: LoaderArgs) {
+export async function loader({context, params, request}: LoaderFunctionArgs) {
   /** Product Handle */
   const {handle} = params;
   const searchParams = new URL(request.url).searchParams;
@@ -34,7 +34,7 @@ export async function loader({context, params, request}: LoaderArgs) {
  * Route
  */
 export default function index() {
-  const {product} = useLoaderData();
+  const {product} = useLoaderData() as any;
 
   return <Product_Page product={product} />;
 }
@@ -47,7 +47,7 @@ query PRODUCT_BY_HANDLE($handle: String, $selectedOptions: [SelectedOptionInput!
   product(handle: $handle) {
     title
     description
-    images(first: 2) {
+    images(first: 6) {
       nodes {
         url
         id
