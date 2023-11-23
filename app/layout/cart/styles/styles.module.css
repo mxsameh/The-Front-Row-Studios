@@ -17,7 +17,10 @@
   visibility: visible;
   pointer-events: auto;
   & aside {
-    transform: translateX(0);
+    /* transform: translateX(0); */
+    -ms-transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 .closeBtn {
@@ -32,7 +35,9 @@
   flex-direction: column;
   background: white;
   transition: transform 0.5s ease-out;
-  transform: translateX(100%);
+  -ms-transform: translate3d(100%, 0, 0);
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
 }
 .cart_body {
   height: 100%;
