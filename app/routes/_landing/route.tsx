@@ -7,7 +7,7 @@ const Layout = () => {
   const {cart} = (useOutletContext() as any) || {};
 
   return (
-    <div className={styles.root}>
+    <div style={{display: 'none'}} className={styles.root}>
       <Header cart={cart} />
       <Outlet />
       <Footer />

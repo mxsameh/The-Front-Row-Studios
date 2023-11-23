@@ -29,7 +29,7 @@ const DesktopHeader = (props) => {
           <Link to="/selected-for-you" className={styles.nav_link}>
             selected for you
           </Link>
-          <Link to="/collections" className={styles.nav_link}>
+          <Link to="" className={styles.nav_link}>
             collections
           </Link>
         </nav>

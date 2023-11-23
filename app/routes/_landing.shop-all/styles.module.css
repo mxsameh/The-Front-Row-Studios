@@ -5,6 +5,24 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   flex-wrap: wrap;
 }
+.collection {
+  padding: 24px;
+  padding-top: calc(var(--header-height) + 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+.collection_title {
+  font-family: 'Clash Display';
+  font-size: 24px;
+  font-weight: bolder;
+}
+.collection_desc {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: justify;
+}
 .productContainer {
   flex-basis: 25%;
 }

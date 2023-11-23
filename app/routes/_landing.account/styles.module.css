@@ -19,6 +19,7 @@
 }
 .main {
   flex-basis: 100%;
+  width: 100%;
 }
 .introText {
   font-size: 16px;

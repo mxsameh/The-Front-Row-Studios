@@ -1,9 +1,9 @@
 .profile_form {
-  width: 100%;
-  margin-top: 40px;
+  width: clamp(0px, 100%, 700px);
+  margin-top: 40px auto;
+  padding: 40px 24px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
   grid-template-areas:
     'firstName lastName '
     'phone phone'
@@ -13,11 +13,9 @@
     'submitBtn submitBtn'
     'cancelBtn cancelBtn';
 
+  gap: 24px;
   background-color: #ededed;
-  padding: 24px 40px;
   border-radius: 16px;
-  max-width: 700px;
-  margin-top: 40px auto;
   @media (width > 860px) {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:

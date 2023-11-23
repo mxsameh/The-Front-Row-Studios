@@ -37,7 +37,7 @@ export default function index() {
           <Navigation />
         </div>
         <Outlet />
-      </main>{' '}
+      </main>
       <aside className={styles.aside}>
         <Navigation />
       </aside>

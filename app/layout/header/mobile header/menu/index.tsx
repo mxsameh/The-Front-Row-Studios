@@ -44,14 +44,11 @@ const Menu = (props) => {
           ))}
 
           <nav className={styles.nav}>
-            <Link
-              to="/collections"
-              className={classNames(styles.link, styles.f_md_it)}
-            >
+            <Link to="" className={classNames(styles.link, styles.f_md_it)}>
               collections
             </Link>
             <Link to="" className={classNames(styles.link, styles.f_md_it)}>
-              members & family
+              friends & family
             </Link>
           </nav>
         </div>
@@ -63,10 +60,10 @@ const Menu = (props) => {
           <Link to="/login" className={styles.footer_link}>
             Login
           </Link>
-          <Link to="/wishlist" className={styles.footer_link}>
+          <Link to="/" className={styles.footer_link}>
             Wishlist
           </Link>
-          <Link to="/contact-us" className={styles.footer_link}>
+          <Link to="/" className={styles.footer_link}>
             Contact Us
           </Link>
         </nav>

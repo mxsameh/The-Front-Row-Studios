@@ -55,7 +55,7 @@ const DropdownMenu = () => {
                   collections
                 </span>
                 <span className={classNames(styles.link, styles.f_md_it)}>
-                  members & family
+                  friends & family
                 </span>
               </nav>
             </div>
