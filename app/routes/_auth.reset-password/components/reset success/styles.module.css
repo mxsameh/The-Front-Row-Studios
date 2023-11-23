@@ -1,0 +1,30 @@
+.reset_success {
+  margin: 40px auto 0;
+  width: clamp(0px, 100%, 500px);
+}
+.success {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.success_icon {
+  width: 20px;
+}
+.success_text {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  text-transform: capitalize;
+}
+.backToLogin {
+  margin-top: 36px;
+  display: block;
+  padding: 10px 8px;
+  color: white;
+  background-color: black;
+  font-size: 14px;
+  border: 1px solid black;
+  border-radius: 50px;
+  text-align: center;
+}

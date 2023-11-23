@@ -1,0 +1,8 @@
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  flex-wrap: wrap;
+}
+.productContainer {
+  flex-basis: 25%;
+}

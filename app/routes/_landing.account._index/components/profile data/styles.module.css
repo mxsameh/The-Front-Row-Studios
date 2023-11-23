@@ -1,0 +1,81 @@
+.profile_data {
+  width: 100%;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  grid-template-areas:
+    'firstName  lastName'
+    'phone password'
+    'email email';
+
+  background-color: #ededed;
+  padding: 24px 40px;
+  border-radius: 16px;
+  max-width: 700px;
+  margin-top: 40px auto;
+  @media (width > 860px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      'firstName  lastName phone'
+      'email email password';
+  }
+}
+.info {
+}
+.info_title {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #333;
+}
+.info_value {
+  margin-top: 8px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+.firstName {
+  grid-area: firstName;
+}
+.lastName {
+  grid-area: lastName;
+}
+.phone {
+  grid-area: phone;
+}
+.email {
+  grid-area: email;
+}
+.password {
+  grid-area: password;
+}
+.btn {
+  display: block;
+  width: clamp(0px, 100%, 400px);
+  height: 38px;
+  margin: 0 auto;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: 1px solid black;
+  border-radius: 100px;
+  @media (width > 860px) {
+    width: clamp(0px, 100%, 200px);
+  }
+}
+.editBtn {
+  margin-top: 40px;
+  @media (width > 860px) {
+    margin-left: unset;
+  }
+}
+.logout {
+  margin-top: 24px;
+  @media (width > 860px) {
+    display: none;
+  }
+}
+.logoutBtn {
+  background: black;
+  color: white;
+}

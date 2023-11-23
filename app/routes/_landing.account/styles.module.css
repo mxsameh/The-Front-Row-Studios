@@ -1,0 +1,33 @@
+.page {
+  width: 100%;
+  padding: 16px;
+  padding-top: calc(var(--header-height) + 40px);
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+  @media (width > 860px) {
+    padding: 40px;
+    padding-top: calc(var(--header-height) + 40px);
+  }
+}
+.aside {
+  display: none;
+  @media (width > 860px) {
+    flex-shrink: 0;
+    display: block;
+  }
+}
+.main {
+  flex-basis: 100%;
+}
+.introText {
+  font-size: 16px;
+  width: clamp(0px, 100%, 500px);
+}
+.navContainer {
+  margin: 24px auto 0;
+  width: fit-content;
+  @media (width > 860px) {
+    display: none;
+  }
+}

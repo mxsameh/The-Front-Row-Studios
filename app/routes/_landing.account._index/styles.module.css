@@ -1,0 +1,16 @@
+.profile {
+  margin-top: 40px;
+  width: 100%;
+  @media (width > 860px) {
+    width: clamp(0px, 100%, 600px);
+  }
+}
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #bbb;
+}
+.introText {
+  font-size: 16px;
+  width: clamp(0px, 100%, 500px);
+}

@@ -88,13 +88,13 @@ export async function loader({context}: LoaderFunctionArgs) {
   );
 
   let loggedInCustomer = null;
-  const metafields = [{namdespace: 'facts', key: 'birth_date'}];
+  // const metafields = [{namespace: 'facts', key: 'birth_date'}];
+  // identifiers: metafields,
 
   if (isLoggedIn) {
     const {customer} = await storefront.query(CUSTOMER_QUERY, {
       variables: {
         token: customerAccessToken?.accessToken,
-        identifiers: metafields,
       },
     });
 
@@ -310,19 +310,13 @@ const FOOTER_QUERY = `#graphql
 ` as const;
 
 const CUSTOMER_QUERY = `#graphql
-  query CUSTOMER($token: String!, $identifiers: [HasMetafieldsIdentifier!]!) {
+  query CUSTOMER($token: String!) {
     customer(customerAccessToken: $token) {
       id
       firstName
       lastName
       email
       phone
-      metafields(identifiers: $identifiers) {
-        namespace
-        key
-        id
-        value
-      }
       defaultAddress {
         address1
         address2

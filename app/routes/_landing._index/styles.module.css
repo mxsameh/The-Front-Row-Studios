@@ -1,0 +1,42 @@
+.intro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  & > div {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  @media (width > 860px) {
+    flex-direction: row;
+    align-items: flex-start;
+    & > div {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+  }
+}
+.intro_left {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  @media (width > 860px) {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+}
+.title {
+  font-size: 40px;
+  font-family: 'Clash Display';
+}
+.desc {
+  margin-top: 24px;
+  font-size: 20px;
+  font-style: italic;
+}
+.logo {
+  margin-top: 40px;
+  width: clamp(0, 60%, 400px);
+}
+.intro_right {
+}
