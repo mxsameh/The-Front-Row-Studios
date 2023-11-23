@@ -1,0 +1,66 @@
+.info {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+.info_leftWrapper {
+  flex-shrink: 0;
+  width: 150px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.info_rightWrapper {
+  width: 100%;
+}
+.info_title {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+.product_selectedColor {
+  font-size: 12px;
+  text-transform: capitalize;
+  color: #777;
+}
+
+.product_colorsList {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.product_color {
+  padding: 3px;
+  cursor: pointer;
+  border-radius: 100%;
+  border: 1px solid transparent;
+}
+.color {
+  display: block;
+  width: 16px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+.selectedColor {
+  border-color: #333 !important;
+}
+
+.sizeGuide {
+  font-size: 12px;
+  text-transform: capitalize;
+  color: #777;
+}
+.product_sizesList {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.product_size {
+  color: #333;
+  font-size: 12px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+}
+.selectedSize {
+  border-color: #333 !important;
+}

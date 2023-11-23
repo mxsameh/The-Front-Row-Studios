@@ -1,0 +1,92 @@
+.main {
+  margin: 0 auto;
+  width: clamp(0px, 100%, 500px);
+  @media (width > 860px) {
+    width: clamp(0px, 100%, 700px);
+  }
+}
+.register_form {
+  width: 100%;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+  grid-template-areas:
+    'firstName'
+    'lastName'
+    'phone'
+    'email'
+    'password'
+    'btn'
+    'error';
+  @media (width > 860px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    grid-template-areas:
+      'firstName lastName phone'
+      'email email password'
+      'error error btn';
+  }
+}
+.fieldset {
+}
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #333;
+}
+.input {
+  margin-top: 8px;
+  font-size: 14px;
+  width: 100%;
+  color: #555;
+  padding: 8px;
+  border-bottom: 1px solid #555;
+  &::placeholder {
+    font-size: 14px;
+    color: #777;
+  }
+}
+.firstName {
+  grid-area: firstName;
+}
+.lastName {
+  grid-area: lastName;
+}
+.phone {
+  grid-area: phone;
+}
+.email {
+  grid-area: email;
+}
+.password {
+  grid-area: password;
+}
+.phone_wrapper {
+  margin-top: 8px;
+}
+.error {
+  grid-area: error;
+  align-self: end;
+  font-size: 14px;
+  color: var(--red);
+}
+.btn {
+  grid-area: btn;
+  height: 34px;
+  width: 100%;
+  margin-top: 24px;
+  border: 1px solid black;
+  border-radius: 50px;
+}
+.form_submit {
+  font-size: 14px;
+  text-transform: capitalize;
+}
+.loadingLine {
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,27 @@
+.btn {
+  width: clamp(300px, 40%, 400px);
+  height: 38px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  border: 1px solid black;
+  border-radius: 100px;
+  @media (width > 1024px) {
+    margin: 0;
+    margin-left: calc(150px + 40px);
+  }
+}
+.addToBagBtn {
+  justify-content: space-between;
+}
+.disabledBtn {
+  color: #777;
+  border-color: #777;
+  pointer-events: none;
+  justify-content: center;
+}
+.product_price {
+  text-transform: uppercase;
+}

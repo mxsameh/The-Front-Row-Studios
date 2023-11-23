@@ -25,7 +25,9 @@
     "gsap": "^3.12.2",
     "isbot": "^3.6.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-phone-number-input": "^3.3.7",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@remix-run/dev": "2.1.0",

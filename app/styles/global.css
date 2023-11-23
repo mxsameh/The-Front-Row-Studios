@@ -36,14 +36,3 @@
 * Animations
 * --------------------------------------------------
 */
-@keyframes loadingLine {
-  0% {
-    transform: scaleX(1);
-  }
-  50% {
-    transform: scaleX(0.2);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-}
