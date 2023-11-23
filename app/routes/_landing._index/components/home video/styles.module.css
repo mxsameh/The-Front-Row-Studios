@@ -1,3 +1,20 @@
+.heroImageContainer {
+  width: 100%;
+  overflow: hidden;
+  @media (width > 860px) {
+    display: none;
+  }
+}
+.heroImage {
+  width: 100%;
+  background-color: #ededed;
+  object-fit: cover;
+  object-position: center top;
+}
 .video {
   width: 100%;
+  display: none;
+  @media (width > 860px) {
+    display: block;
+  }
 }
