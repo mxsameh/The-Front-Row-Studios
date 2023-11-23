@@ -1,4 +1,4 @@
-.intro {
+.welcome {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
     }
   }
 }
-.intro_left {
+.welcome_right {
   padding: 40px 24px;
   display: flex;
   flex-direction: column;
@@ -35,18 +35,8 @@
   font-size: 20px;
   font-style: italic;
 }
-.logo {
-  margin-top: 40px;
-  width: clamp(0, 60%, 400px);
-}
-.intro_right {
-}
 
-.wallPoster {
-  width: 100%;
-}
-.wallPoster_img {
+.image {
   width: 100%;
   object-fit: cover;
-  object-position: center top;
 }

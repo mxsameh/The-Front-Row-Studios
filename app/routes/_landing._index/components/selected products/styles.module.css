@@ -1,3 +1,10 @@
+.selected_title {
+  font-family: 'Clash Display';
+  font-size: clamp(32px, 4vw, 64px);
+  text-align: center;
+  font-weight: bolder;
+  padding: 40px 24px;
+}
 .productsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
