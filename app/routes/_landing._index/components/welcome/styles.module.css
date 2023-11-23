@@ -17,6 +17,7 @@
 }
 .welcome_right {
   padding: 40px 24px;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,12 +32,19 @@
 .title {
   font-size: 40px;
   font-family: 'Clash Display';
+  font-weight: bold;
 }
-.desc {
+.desc,
+.desc2 {
   font-family: 'Clash Display';
   margin-top: 24px;
   font-size: 20px;
-  font-style: italic;
+  font-weight: 500;
+  max-width: 600px;
+}
+.desc2 {
+  margin-top: 12px;
+  display: block;
 }
 
 .image {

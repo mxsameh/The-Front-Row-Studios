@@ -17,9 +17,12 @@ const Welcome = () => {
           In the finest fabrics & the sexiest silhouettes, we present to you the
           power of sensuality through our first Fall/Winter collection - "THE
           FRONT ROW STUDIOS". Following the female body & gaze, this collection
-          embodies a sense of luxury, confidence & indulgence. Intertwined with
-          our statement pieces are timeless essentials that echo through eras.
-          Handmade & tailored to perfection, these pieces are made just for you.
+          embodies a sense of luxury, confidence & indulgence.
+          <span className={styles.desc2}>
+            Intertwined with our statement pieces are timeless essentials that
+            echo through eras. Handmade & tailored to perfection, these pieces
+            are made just for you.
+          </span>
         </p>
       </div>
     </section>
