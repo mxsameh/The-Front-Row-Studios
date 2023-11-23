@@ -20,9 +20,13 @@ import {
 import type {CustomerAccessToken} from '@shopify/hydrogen/storefront-api-types';
 import favicon from '../public/favicon.svg';
 import resetStyles from './styles/reset.css';
-import appStyles from './styles/app.css';
-import {Layout} from '~/components/Layout';
+import indexStyles from './styles/index.css';
+import globalStyles from './styles/global.css';
+import swiperStyles from './styles/swiper.css';
+
+// import {Layout} from '~/components/Layout';
 import {cssBundleHref} from '@remix-run/css-bundle';
+import CustomerProvider from './context/customerContext';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -48,8 +52,10 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
 export function links() {
   return [
     ...(cssBundleHref ? [{rel: 'stylesheet', href: cssBundleHref}] : []),
+    {rel: 'stylesheet', href: globalStyles},
     {rel: 'stylesheet', href: resetStyles},
-    {rel: 'stylesheet', href: appStyles},
+    {rel: 'stylesheet', href: indexStyles},
+    {rel: 'stylesheet', href: swiperStyles},
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -67,6 +73,9 @@ export const useRootLoaderData = () => {
   return root?.data as SerializeFrom<typeof loader>;
 };
 
+/**
+ * LOADER
+ */
 export async function loader({context}: LoaderFunctionArgs) {
   const {storefront, session, cart} = context;
   const customerAccessToken = await session.get('customerAccessToken');
@@ -78,40 +87,59 @@ export async function loader({context}: LoaderFunctionArgs) {
     customerAccessToken,
   );
 
+  let loggedInCustomer = null;
+  const metafields = [{namdespace: 'facts', key: 'birth_date'}];
+
+  if (isLoggedIn) {
+    const {customer} = await storefront.query(CUSTOMER_QUERY, {
+      variables: {
+        token: customerAccessToken?.accessToken,
+        identifiers: metafields,
+      },
+    });
+
+    loggedInCustomer = customer;
+  }
+
   // defer the cart query by not awaiting it
   const cartPromise = cart.get();
 
   // defer the footer query (below the fold)
-  const footerPromise = storefront.query(FOOTER_QUERY, {
-    cache: storefront.CacheLong(),
-    variables: {
-      footerMenuHandle: 'footer', // Adjust to your footer menu handle
-    },
-  });
+  // const footerPromise = storefront.query(FOOTER_QUERY, {
+  //   cache: storefront.CacheLong(),
+  //   variables: {
+  //     footerMenuHandle: 'footer', // Adjust to your footer menu handle
+  //   },
+  // });
 
   // await the header query (above the fold)
-  const headerPromise = storefront.query(HEADER_QUERY, {
-    cache: storefront.CacheLong(),
-    variables: {
-      headerMenuHandle: 'main-menu', // Adjust to your header menu handle
-    },
-  });
+  // const headerPromise = storefront.query(HEADER_QUERY, {
+  //   cache: storefront.CacheLong(),
+  //   variables: {
+  //     headerMenuHandle: 'main-menu', // Adjust to your header menu handle
+  //   },
+  // });
 
   return defer(
     {
-      cart: cartPromise,
-      footer: footerPromise,
-      header: await headerPromise,
-      isLoggedIn,
+      cart: await cartPromise,
+      // footer: footerPromise,
+      // header: await headerPromise,
+      customer: loggedInCustomer,
+      // isLoggedIn,
       publicStoreDomain,
     },
     {headers},
   );
 }
 
+/**
+ * ROOT
+ */
 export default function App() {
   const nonce = useNonce();
   const data = useLoaderData<typeof loader>();
+  const {customer, cart} = data || {};
 
   return (
     <html lang="en">
@@ -122,9 +150,9 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Layout {...data}>
-          <Outlet />
-        </Layout>
+        <CustomerProvider customerData={customer}>
+          <Outlet context={{cart}} />
+        </CustomerProvider>
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />
@@ -156,17 +184,17 @@ export function ErrorBoundary() {
         <Links />
       </head>
       <body>
-        <Layout {...rootData}>
-          <div className="route-error">
-            <h1>Oops</h1>
-            <h2>{errorStatus}</h2>
-            {errorMessage && (
-              <fieldset>
-                <pre>{errorMessage}</pre>
-              </fieldset>
-            )}
-          </div>
-        </Layout>
+        {/* <Layout {...rootData}> */}
+        <div className="route-error">
+          <h1>Oops</h1>
+          <h2>{errorStatus}</h2>
+          {errorMessage && (
+            <fieldset>
+              <pre>{errorMessage}</pre>
+            </fieldset>
+          )}
+        </div>
+        {/* </Layout> */}
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />
@@ -280,3 +308,30 @@ const FOOTER_QUERY = `#graphql
   }
   ${MENU_FRAGMENT}
 ` as const;
+
+const CUSTOMER_QUERY = `#graphql
+  query CUSTOMER($token: String!, $identifiers: [HasMetafieldsIdentifier!]!) {
+    customer(customerAccessToken: $token) {
+      id
+      firstName
+      lastName
+      email
+      phone
+      metafields(identifiers: $identifiers) {
+        namespace
+        key
+        id
+        value
+      }
+      defaultAddress {
+        address1
+        address2
+        phone
+        city
+        country
+        zip
+        id
+      }
+    }
+  }
+`;

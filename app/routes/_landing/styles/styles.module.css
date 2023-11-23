@@ -1,0 +1,15 @@
+.root {
+  min-height: 100dvh;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  font-style: italic;
+  font-size: 40px;
+  margin: 40px auto;
+  width: fit-content;
+  color: blue;
+  text-transform: uppercase;
+}

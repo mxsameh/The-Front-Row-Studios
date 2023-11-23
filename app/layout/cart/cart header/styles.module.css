@@ -1,0 +1,26 @@
+.cart_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+.header_title {
+  width: 45px;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 500;
+}
+.header_count {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+.header_icon {
+  width: 45px;
+}
+.closeIcon {
+  width: 20px;
+  aspect-ratio: 1;
+  margin-left: auto;
+  cursor: pointer;
+}

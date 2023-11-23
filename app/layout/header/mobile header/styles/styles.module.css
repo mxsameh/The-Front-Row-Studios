@@ -1,0 +1,31 @@
+.header {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  :root {
+    --header-height: 200px;
+  }
+}
+
+.header_wrapper {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 999;
+}
+
+.header_menuIcon {
+  width: 32px;
+}
+.header_logo {
+  width: 100px;
+}
+.header_cart {
+  font-size: 16px;
+  font-weight: normal;
+}

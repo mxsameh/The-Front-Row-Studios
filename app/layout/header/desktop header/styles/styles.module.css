@@ -1,0 +1,42 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+.nav_wrapper {
+  width: 260px;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+}
+.nav_link {
+  font-size: 14px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.emblemLogo {
+  width: 120px;
+}
+.ctas {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.ctas_icon {
+  stroke-width: 2px;
+  width: 16px;
+  cursor: pointer;
+}

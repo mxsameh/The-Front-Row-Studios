@@ -1,0 +1,49 @@
+/*
+* --------------------------------------------------
+* Global Variables
+* --------------------------------------------------
+*/
+:root {
+  --grey-100: #e5e5e5e5;
+  --grey-200: #bbb;
+  --red: #dc3545;
+  --header-height: 64px;
+  --footer-height: 528px @media (width > 860px) {
+    --header-height: 77px;
+    --footer-height: 312px;
+  }
+}
+
+/*
+* --------------------------------------------------
+* Fonts
+* --------------------------------------------------
+*/
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  src: url(../assets/fonts/Nunito.ttf);
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  src: url(../assets/fonts/OpenSans.ttf);
+}
+
+/*
+* --------------------------------------------------
+* Animations
+* --------------------------------------------------
+*/
+@keyframes loadingLine {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.2);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
