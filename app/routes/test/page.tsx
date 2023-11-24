@@ -1,3 +1,4 @@
+import {Image} from '@shopify/hydrogen';
 import styles from './styles.module.css';
 import testImage from '~/assets/images/product1.png';
 
@@ -26,10 +27,10 @@ const Product = ({product}) => {
   return (
     <div className={styles.category_product}>
       <div className={styles.product_imageContainer}>
-        <img
-          src={images[0].url}
-          alt="testing"
+        <Image
+          data={images[0]}
           className={styles.product_image}
+          sizes="(min-width: 300px) 33vw, 50vw"
         />
       </div>
     </div>
