@@ -29,6 +29,7 @@ const COLLECTIONS_QUERY = `#graphql
       node {
         title
         description
+        descriptionHtml
         products(first: 2) {
           nodes {
             title

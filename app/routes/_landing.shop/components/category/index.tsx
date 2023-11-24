@@ -4,8 +4,10 @@ import Slider from '~/components/slider';
 
 const Category = (props) => {
   const {category} = props;
-  const products = category.products.nodes;
+  let {title, descriptionHtml, products} = category;
+  products = products.nodes;
   const sliderImages = products[0].images?.nodes?.slice(1);
+
   return (
     <section
       key={category.title}
@@ -14,13 +16,18 @@ const Category = (props) => {
     >
       {/* CATEGORY INFO */}
       <div className={styles.category_info}>
-        <h2 className={styles.category_title}>{category.title}</h2>
-        <p className={styles.category_description}>{category.description}</p>
+        <h2 className={styles.category_title}>{title}</h2>
+        <div
+          className={styles.category_description}
+          dangerouslySetInnerHTML={{__html: descriptionHtml}}
+        />
       </div>
+
       {/* CATEGORY PRODUCTS */}
       {products.map((product) => (
         <Product key={product.handle} product={product} />
       ))}
+
       {products.length == 1 && (
         <div className={styles.sliderContainer}>
           <Slider images={sliderImages} />
