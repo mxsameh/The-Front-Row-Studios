@@ -15,7 +15,7 @@ const Slider = (props) => {
   return (
     <>
       <Swiper
-        // className={styles.swiper}
+        className={styles.swiper}
         modules={[Navigation]}
         slidesPerView={1}
         navigation={{nextEl: `#${nextBtnId}`, prevEl: `#${prevBtnId}`}}
