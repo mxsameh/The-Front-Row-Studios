@@ -1,6 +1,6 @@
 .page {
   width: 100%;
-  padding: 16px;
+  padding: 40px 16px;
   padding-top: calc(var(--header-height) + 40px);
   display: flex;
   justify-content: space-between;

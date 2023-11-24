@@ -11,7 +11,7 @@
   color: #333;
   padding-bottom: 2px;
   border-bottom: 1px solid white;
-  &.active {
+  &:global(.active) {
     color: black;
     border-color: black;
   }

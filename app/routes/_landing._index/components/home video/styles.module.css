@@ -1,12 +1,12 @@
 .heroImageContainer {
   width: 100%;
-  overflow: hidden;
   @media (width > 860px) {
     display: none;
   }
 }
 .heroImage {
   width: 100%;
+  aspect-ratio: 7.5 / 8;
   background-color: #ededed;
   object-fit: cover;
   object-position: center top;
