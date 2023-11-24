@@ -33,7 +33,6 @@ const formatProduct = (product: any) => {
   let selectedSize = '';
 
   selectedOptions?.forEach(({name, value}) => {
-    // console.log(value);
     if (name.toLowerCase().includes('size')) {
       selectedSize = value;
     } else {

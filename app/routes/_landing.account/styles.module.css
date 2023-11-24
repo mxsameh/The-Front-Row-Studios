@@ -32,3 +32,16 @@
     display: none;
   }
 }
+.divider {
+  margin: 40px 0;
+  width: 100%;
+  height: 1px;
+  background: #bbb;
+}
+.account_body {
+  width: clamp(0px, 100%, 700px);
+  margin: 0px auto;
+  @media (width > 860px) {
+    margin-left: unset;
+  }
+}

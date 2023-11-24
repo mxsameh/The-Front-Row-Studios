@@ -1,6 +1,5 @@
 .profile_form {
-  width: clamp(0px, 100%, 700px);
-  margin-top: 40px auto;
+  width: 100%;
   padding: 40px 24px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

@@ -1,11 +1,11 @@
 import {useLoaderData} from '@remix-run/react';
-import {LoaderArgs, json} from '@shopify/remix-oxygen';
+import {LoaderFunctionArgs, json} from '@shopify/remix-oxygen';
 import SelectedForYou from './page';
 
 /**
  * Loader
  */
-export async function loader({context}: LoaderArgs) {
+export async function loader({context}: LoaderFunctionArgs) {
   const {products} = await context.storefront.query(PRODUCTS_QUERY);
 
   return json({products: products.nodes});
@@ -15,7 +15,7 @@ export async function loader({context}: LoaderArgs) {
  * Page
  */
 export default function index() {
-  const {products} = useLoaderData();
+  const {products} = useLoaderData() as any;
 
   return <SelectedForYou products={products} />;
 }

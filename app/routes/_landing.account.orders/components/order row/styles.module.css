@@ -1,0 +1,23 @@
+.table_row {
+  @media (pointer: fine) {
+    &:hover {
+      cursor: pointer;
+      background-color: #ddd;
+    }
+  }
+  &:last-of-type {
+    td {
+      padding-bottom: 40px;
+    }
+  }
+}
+.table_data {
+  padding: 16px;
+  padding-left: 24px;
+  white-space: nowrap;
+  color: #333;
+  &:last-of-type {
+    text-align: right;
+    padding-right: 24px;
+  }
+}

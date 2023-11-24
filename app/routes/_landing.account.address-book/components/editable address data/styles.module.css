@@ -1,0 +1,83 @@
+.address_form {
+  width: 100%;
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  grid-template-areas:
+    'country city zip'
+    'address address address'
+    'error error error'
+    'saveBtn saveBtn saveBtn'
+    'cancelBtn cancelBtn cancelBtn';
+  background: #ededed;
+  border-radius: 16px;
+  @media (width > 860px) {
+    grid-template-areas:
+      'country city zip'
+      'address address address'
+      'error error .'
+      'saveBtn saveBtn cancelBtn';
+  }
+}
+
+.fieldset {
+}
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #333;
+}
+.input {
+  margin-top: 8px;
+  font-size: 14px;
+  width: 100%;
+  color: #555;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #555;
+  &::placeholder {
+    font-size: 14px;
+    color: #777;
+  }
+}
+.country {
+  grid-area: country;
+}
+.city {
+  grid-area: city;
+}
+.address {
+  grid-area: address;
+}
+
+.address2 {
+  grid-area: address2;
+}
+.zip {
+  grid-area: zip;
+}
+.error {
+  grid-area: error;
+  align-self: end;
+  font-size: 14px;
+  color: var(--red);
+}
+.btn {
+  height: 38px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 50px;
+  font-size: 14px;
+}
+.cancelBtn {
+  grid-area: cancelBtn;
+}
+.saveBtn {
+  grid-area: saveBtn;
+  background: black;
+  color: white;
+}
+.loadingLine {
+  padding: 0 8px;
+}

@@ -1,0 +1,56 @@
+.address_data {
+  width: 100%;
+  padding: 40px 24px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'country city zip'
+    ' address1 address1 address1';
+  background-color: #ededed;
+  border-radius: 16px;
+  @media (width > 860px) {
+    gap: 16px;
+  }
+}
+.info {
+}
+.info_title {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #333;
+}
+.info_value {
+  margin-top: 8px;
+  padding-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+.country {
+  grid-area: country;
+}
+.city {
+  grid-area: city;
+}
+.address1 {
+  grid-area: address1;
+}
+.phone {
+}
+.zip {
+  grid-area: zip;
+}
+.editBtn {
+  width: 100%;
+  height: 38px;
+  margin-top: 40px;
+  padding: 8px 16px;
+  display: block;
+  font-size: 14px;
+  border: 1px solid black;
+  border-radius: 50px;
+  @media (width > 860px) {
+    width: clamp(0px, 100%, 200px);
+  }
+}

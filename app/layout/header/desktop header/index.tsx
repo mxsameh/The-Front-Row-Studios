@@ -10,6 +10,7 @@ import {ICustomerContext, customerContext} from '~/context/customerContext';
 const DesktopHeader = (props) => {
   const {cartCount, toogleCart} = props;
   const {customer} = useContext(customerContext) as ICustomerContext;
+
   const openHeaderMenu = () => {
     document.getElementById('header-dropdown-menu')?.classList.add('active');
   };

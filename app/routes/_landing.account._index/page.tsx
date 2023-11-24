@@ -13,14 +13,13 @@ const ProfilePage = () => {
   if (!customer) return <div>loading...</div>;
 
   return (
-    <div className={styles.profile}>
-      <div className={styles.divider} />
+    <>
       {!editMode ? (
         <ProfileData customer={customer} toogleEditMode={toogleEditMode} />
       ) : (
         <EditableProfileData toogleEditMode={toogleEditMode} />
       )}
-    </div>
+    </>
   );
 };
 

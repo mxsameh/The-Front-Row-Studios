@@ -37,8 +37,9 @@ const COLLECTIONS_QUERY = `#graphql
               name
               values
             }
-            images(first: 4) {
+            images(first: 5) {
               nodes {
+                id
                 altText
                 url
               }

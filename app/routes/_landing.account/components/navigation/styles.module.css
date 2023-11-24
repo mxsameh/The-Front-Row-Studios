@@ -12,16 +12,6 @@
   font-size: 14px;
   color: black;
   border-radius: 50px;
-  &.active {
-    color: white;
-    background: black;
-    @media (width > 860px) {
-      color: black;
-      background: unset;
-      font-weight: 500;
-      border-color: black;
-    }
-  }
   @media (width > 860px) {
     padding: 0;
     padding-bottom: 2px;
@@ -30,6 +20,16 @@
     background: unset;
     border-bottom: 1px solid transparent;
     border-radius: unset;
+  }
+}
+:global .active {
+  color: white;
+  background: black;
+  @media (width > 860px) {
+    color: black;
+    background: unset;
+    font-weight: 500;
+    border-color: black;
   }
 }
 .logout {

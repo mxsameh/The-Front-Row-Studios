@@ -8,6 +8,7 @@ import {Fragment} from 'react';
 
 const Slider = (props) => {
   const {images} = props;
+
   const nextBtnId = 'slider-next-btn';
   const prevBtnId = 'slider-prev-btn';
 

@@ -33,10 +33,17 @@ export default function index() {
           Hey {name}. Here you can keep track of your recent orders, as well as
           view and edit your account
         </p>
+
+        {/* MOBILE NAV  */}
         <div className={styles.navContainer}>
           <Navigation />
         </div>
-        <Outlet />
+        {/* DIVIDER */}
+        <div className={styles.divider}/>
+        {/* ACCOUNT BODY */}
+        <section className={styles.account_body}>
+          <Outlet />
+        </section>
       </main>
       <aside className={styles.aside}>
         <Navigation />
