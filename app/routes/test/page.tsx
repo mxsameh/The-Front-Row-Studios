@@ -1,6 +1,7 @@
 import {Image} from '@shopify/hydrogen';
 import styles from './styles.module.css';
 import testImage from '~/assets/images/product1.png';
+import Product from '../_landing.shop/components/product';
 
 const Test = (props) => {
   const {collections} = props;
@@ -21,18 +22,18 @@ const Test = (props) => {
 };
 export default Test;
 
-const Product = ({product}) => {
-  // console.log(product);
-  const images = product.images.nodes;
-  return (
-    <div className={styles.category_product}>
-      <div className={styles.product_imageContainer}>
-        <Image
-          data={images[0]}
-          className={styles.product_image}
-          sizes="(min-width: 300px) 33vw, 50vw"
-        />
-      </div>
-    </div>
-  );
-};
+// const Product = ({product}) => {
+//   // console.log(product);
+//   const images = product.images.nodes;
+//   return (
+//     <div className={styles.category_product}>
+//       <div className={styles.product_imageContainer}>
+//         <Image
+//           data={images[0]}
+//           className={styles.product_image}
+//           sizes="(min-width: 300px) 33vw, 50vw"
+//         />
+//       </div>
+//     </div>
+//   );
+// };
