@@ -2,38 +2,35 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 0;
-  & > *:not(:first-child) {
-    flex-basis: 50%;
-    max-width: 50%;
-    flex-shrink: 0;
-    @media (width > 1200px) {
-      flex-basis: calc(100% / 3);
-      max-width: calc(100% / 3);
-    }
+}
+.category > div:not(:first-of-type) {
+  width: 50%;
+  flex-basis: 50%;
+  flex-shrink: 0;
+  @media (width > 1200px) {
+    width: calc(100% / 3);
+    flex-basis: calc(100% / 3);
   }
 }
+
 .category_info {
-  max-width: 100%;
-  padding: 40px;
+  width: 100%;
+  flex-basis: 100%;
+  padding: 24px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   gap: 24px;
-  flex-wrap: wrap;
-  flex-basis: 100%;
-  /* background-color: #ededed; */
   @media (width > 1200px) {
+    width: calc(100% / 3);
     flex-basis: calc(100% / 3);
-    max-width: calc(100% / 3);
     gap: 16px;
     align-items: flex-start;
   }
 }
 .category_title {
   font-size: 32px;
-  text-align: left;
   color: black;
   text-transform: uppercase;
   font-family: 'Clash Display';
