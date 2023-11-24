@@ -1,4 +1,4 @@
-import styles from './styles/styles.module.css';
+import styles from './styles.module.css';
 import classNames from 'classnames';
 import {Link} from '@remix-run/react';
 import {headerLeftCategories, headerRightCategories} from '~/data/header-menu';

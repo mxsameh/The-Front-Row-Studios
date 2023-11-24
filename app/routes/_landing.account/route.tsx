@@ -39,7 +39,7 @@ export default function index() {
           <Navigation />
         </div>
         {/* DIVIDER */}
-        <div className={styles.divider}/>
+        <div className={styles.divider} />
         {/* ACCOUNT BODY */}
         <section className={styles.account_body}>
           <Outlet />
