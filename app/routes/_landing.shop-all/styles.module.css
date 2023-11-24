@@ -2,8 +2,11 @@
 }
 .productsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   flex-wrap: wrap;
+  grid-template-columns: 1fr;
+  @media (width > 700px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   @media (width > 1300px) {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -18,8 +21,12 @@
 }
 .collection_title {
   font-family: 'Clash Display';
-  font-size: 24px;
+  font-size: 40px;
+  line-height: 38px;
   font-weight: bold;
+  @media (width > 700px) {
+    font-size: 24px;
+  }
 }
 .collection_desc {
   font-family: 'Clash Display';
@@ -28,6 +35,11 @@
   font-weight: 500;
   text-align: justify;
   line-height: 20px;
+
+  font-size: 16px;
+  @media (width > 700px) {
+    font-size: 14px;
+  }
 }
 .productContainer {
   flex-basis: 25%;
