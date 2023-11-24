@@ -1,8 +1,8 @@
 import {Image} from '@shopify/hydrogen';
 import styles from './styles.module.css';
 import testImage from '~/assets/images/product1.png';
-import Product from '../_landing.shop/components/product';
-import Category from '../_landing.shop/components/category';
+import Product from '../../routes/_landing.shop/components/product';
+import Category from '../../routes/_landing.shop/components/category';
 
 const Test = (props) => {
   const {collections} = props;
