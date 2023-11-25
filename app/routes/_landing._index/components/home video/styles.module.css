@@ -11,10 +11,40 @@
   object-fit: cover;
   object-position: center top;
 }
+.videoContainer {
+  position: relative;
+  display: none;
+}
 .video {
   width: 100%;
-  display: none;
   @media (width > 860px) {
     display: block;
+  }
+}
+.video_controls {
+  padding: 40px 24px;
+  position: absolute;
+  z-index: 9;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.control {
+  padding: 8px;
+  border-radius: 40px;
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.control_icon {
+  width: 24px;
+  fill: white;
+  transition: transform 0.1s linear;
+  @media (pointer: fine) {
+    &:hover {
+      fill: #777;
+      transform: scale(1.2);
+    }
   }
 }

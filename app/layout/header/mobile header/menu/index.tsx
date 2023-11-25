@@ -1,10 +1,13 @@
 import styles from './styles.module.css';
 import {Link} from '@remix-run/react';
+import {useContext} from 'react';
 import classNames from 'classnames';
 import {headerLeftCategories, headerRightCategories} from '~/data/header-menu';
+import {ICustomerContext, customerContext} from '~/context/customerContext';
 
 const Menu = (props) => {
   const {toogleMenu} = props;
+  const {customer} = useContext(customerContext) as ICustomerContext;
   const handleClick = (e) => {
     if (e.target.tagName == 'A') toogleMenu();
   };
@@ -58,7 +61,7 @@ const Menu = (props) => {
       <div className={styles.menu_footer}>
         <nav className={styles.footer_nav}>
           <Link to="/login" className={styles.footer_link}>
-            Login
+            {customer ? 'Account' : 'Login'}
           </Link>
           <Link to="/" className={styles.footer_link}>
             Wishlist

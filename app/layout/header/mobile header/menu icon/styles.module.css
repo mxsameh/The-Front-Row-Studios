@@ -7,12 +7,14 @@
 }
 .icon_line {
   display: block;
-  background-color: black;
+  background: black;
   width: 32px;
   height: 3px;
   transform-origin: center;
-  &:nth-of-type(1) {
-    width: 24px;
-    margin-bottom: 8px;
-  }
+}
+
+.icon_line:nth-of-type(1) {
+  width: 24px;
+  margin-bottom: 8px;
+  background: red;
 }
