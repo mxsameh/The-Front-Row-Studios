@@ -21,7 +21,7 @@ const ShopAll = (props) => {
           </p>
         </div>
         {products.map((product) => (
-          <div className={styles.productContainer}>
+          <div key={product.handle} className={styles.productContainer}>
             <Product product={formatProduct(product)} />
           </div>
         ))}
