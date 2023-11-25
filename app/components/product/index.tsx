@@ -25,11 +25,16 @@ const Product = (props) => {
         <Image
           data={image}
           className={styles.product_image}
-          sizes="(min-width: 300px) 33vw, 50vw"
+          sizes="(min-width: 400px) 33vw, 50vw"
+          aspectRatio="2/3"
         />
 
-        {/* PRODUCT INFORMATION (NAME, SIZES, PRICE) */}
+        {/* PRODUCT INFORMATION (TITLE, SIZES, PRICE) */}
         <div className={styles.product_info}>
+          {/* TITLE */}
+          <h2 className={styles.product_title}>{title}</h2>
+
+          {/* SIZES */}
           <div className={styles.product_sizes}>
             {sizes.map((size) => (
               <span key={size} className={styles.size}>
@@ -39,6 +44,7 @@ const Product = (props) => {
             <h4 className={styles.sizes_title}>Sizes:</h4>
           </div>
 
+          {/* PRICE */}
           <div className={styles.product_price}>
             <h4 className={styles.amount}>{`${amount}${currencySymbol}`}</h4>
           </div>

@@ -14,12 +14,12 @@
 .videoContainer {
   position: relative;
   display: none;
-}
-.video {
-  width: 100%;
   @media (width > 860px) {
     display: block;
   }
+}
+.video {
+  width: 100%;
 }
 .video_controls {
   padding: 40px 24px;
