@@ -24,7 +24,7 @@ export default function index() {
 
 const COLLECTIONS_QUERY = `#graphql
   query COLLECTIONS {
-  collections(first: 6) {
+  collections(first: 7) {
     edges {
       node {
         title
