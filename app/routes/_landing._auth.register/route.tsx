@@ -12,11 +12,9 @@ import RegisterPage from './page';
  */
 export async function loader({context}: LoaderFunctionArgs) {
   const customerAccessToken = await context.session.get('customerAccessToken');
-  if (customerAccessToken) {
-    return redirect('/account');
-  }
 
-  return null;
+  if (customerAccessToken) return redirect('/account');
+  else return null;
 }
 
 /**
@@ -30,16 +28,18 @@ export async function action({request, context}: ActionFunctionArgs) {
   const {storefront, session} = context;
 
   try {
-    const form = await request.formData();
-    const firstName = String(form?.get('firstName') || '');
-    const lastName = String(form?.get('lastName') || '');
-    const phone = String(form?.get('phone') || '');
+    let form = await request.formData();
+    let firstName = String(form?.get('firstName') || '');
+    let lastName = String(form?.get('lastName') || '');
+    let phone = String(form?.get('phone') || '');
     const email = String(form?.get('email') || '');
     const password = String(form?.get('password') || '');
 
     const validInputs = Boolean(
       firstName && lastName && email && password && phone,
     );
+
+    phone = phone.replaceAll(' ', '');
     const validPhone = isValidPhoneNumber(phone);
 
     if (!validInputs) throw new Error('Please fill the required fields above');
@@ -52,8 +52,7 @@ export async function action({request, context}: ActionFunctionArgs) {
       },
     });
 
-    console.log(customerCreate);
-    // Check if customer is created successfully
+    // Check if customer is created unsuccessfully
     if (customerCreate?.customerUserErrors?.length) {
       throw new Error(customerCreate?.customerUserErrors[0].message);
     }
@@ -76,7 +75,6 @@ export async function action({request, context}: ActionFunctionArgs) {
       },
     );
 
-    console.log(customerAccessTokenCreate?.customerAccessToken?.accessToken);
     if (!customerAccessTokenCreate?.customerAccessToken?.accessToken) {
       throw new Error('Missing access token');
     }
@@ -87,22 +85,16 @@ export async function action({request, context}: ActionFunctionArgs) {
       customerAccessTokenCreate?.customerAccessToken,
     );
 
-    return json(
-      {error: null, newCustomer},
-      {
-        status: 302,
-        headers: {
-          'Set-Cookie': await session.commit(),
-          Location: '/',
-        },
+    return redirect('/', {
+      headers: {
+        'Set-Cookie': await session.commit(),
       },
-    );
+    });
   } catch (error) {
     console.log(error);
-    if (error instanceof Error) {
+    if (error instanceof Error)
       return json({error: error.message}, {status: 400});
-    }
-    return json({error}, {status: 400});
+    else return json({error}, {status: 400});
   }
 }
 
@@ -111,11 +103,7 @@ export default function index() {
 }
 
 const CUSTOMER_CREATE_MUTATION = `#graphql
-  mutation customerCreate(
-    $input: CustomerCreateInput!,
-    $country: CountryCode,
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
+  mutation customerCreate($input: CustomerCreateInput!) {
     customerCreate(input: $input) {
       customer {
         id
@@ -130,20 +118,16 @@ const CUSTOMER_CREATE_MUTATION = `#graphql
 `;
 
 const CREATE_ACCESS_TOKEN_MUTATION = `#graphql
-  mutation registerLogin(
-    $input: CustomerAccessTokenCreateInput!,
-    $country: CountryCode,
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
+  mutation registerLogin($input: CustomerAccessTokenCreateInput!) {
     customerAccessTokenCreate(input: $input) {
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
       customerUserErrors {
         code
         field
         message
-      }
-      customerAccessToken {
-        accessToken
-        expiresAt
       }
     }
   }

@@ -18,7 +18,7 @@ const CartAside = (props) => {
   return (
     <div id="cart" aria-modal className={cartClasses} role="dialog">
       {/* CLOSE BUTTON */}
-      <button type="button" className={styles.closeBtn} onClick={toogleCart} />
+      {/* <button type="button" className={styles.closeBtn} onClick={toogleCart} /> */}
 
       {/* CART */}
       <aside className={styles.cart}>
