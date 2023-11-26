@@ -1,58 +1,108 @@
-import {ActionArgs, json, redirect} from '@shopify/remix-oxygen';
-import ResetPassword from './page';
+import {
+  ActionFunction,
+  ActionFunctionArgs,
+  MetaFunction,
+  json,
+  redirect,
+} from '@shopify/remix-oxygen';
+import Recover from './page';
+
+/**
+ * Meta
+ */
+export const meta: MetaFunction = () => {
+  return [{title: 'Reset Password'}];
+};
 
 /**
  * Action
  */
 
-export async function action({request, context}: ActionArgs) {
-  const form = await request.formData();
-  const email = String(form?.get('email') || '');
+const badRequest = (data) => json(data, {status: 400});
+export const action: ActionFunction = async ({
+  request,
+  context,
+}: ActionFunctionArgs) => {
+  const {searchParams} = new URL(request.url);
+  const resetUrl = searchParams.get('resetUrl');
 
-  // Check if method is POST
-  if (request.method != 'POST')
-    return json({error: 'Method not allowed'}, {status: 405});
-  try {
-    // Check if email is provided
-    if (!email) throw new Error('Please provide an email');
-
-    // Reset password
-    const {customerRecover} = await context.storefront.mutate(
-      CUSTOMER_RECOVER_MUTATION,
-      {
-        variables: {email},
-      },
-    );
-
-    // Check if any errors
-    const {customerUserErrors} = customerRecover || {};
-    if (customerUserErrors?.length)
-      throw new Error(customerUserErrors[0].message);
-
-    return json({resetRequested: true});
-  } catch (error: any) {
-    if (error instanceof Error) {
-      return json({error: error.message, resetRequested: false}, {status: 400});
-    }
-    return json({error, resetRequested: false}, {status: 400});
+  if (!resetUrl || typeof resetUrl !== 'string') {
+    return badRequest({
+      error: 'Wrong token. Please try to reset your password again.',
+    });
   }
-}
+
+  // Form data
+  const formData = await request.formData();
+  const password = formData.get('password');
+
+  // Verify password
+  if (!password || typeof password !== 'string') {
+    return badRequest({
+      error: 'Please provide matching passwords',
+    });
+  }
+
+  // Reset password
+  const {session, storefront} = context;
+  try {
+    const data = await storefront.mutate(CUSTOMER_RESET_MUTATION, {
+      variables: {
+        resetUrl,
+        password,
+      },
+    });
+
+    // Something is wrong with the user's input.
+    const {accessToken} = data?.customerReset?.customerAccessToken ?? {};
+    if (!accessToken) {
+      throw new Error(data?.customerReset?.customerUserErrors.join(', '));
+    }
+
+    // Reset succeded
+    session.set('customerAccessToken', accessToken);
+
+    return redirect('/account', {
+      headers: {
+        'Set-Cookie': await session.commit(),
+      },
+    });
+  } catch (error: any) {
+    if (storefront.isApiError(error)) {
+      return badRequest({
+        error: 'Something went wrong. Please try again later.',
+      });
+    }
+
+    /**
+     * The user did something wrong, but the raw error from the API is not super friendly.
+     * Let's make one up.
+     */
+    return badRequest({
+      error: 'Sorry. We could not update your password.',
+    });
+  }
+};
 
 /**
- * Reset Password Page
+ * Page
  */
 export default function index() {
-  return <ResetPassword />;
+  return <Recover />;
 }
 
-const CUSTOMER_RECOVER_MUTATION = `#graphql
-mutation customerRecover($email: String!) {
-  customerRecover(email: $email) {
-    customerUserErrors {
+const CUSTOMER_RESET_MUTATION = `#graphql
+  mutation customerResetByUrl($resetUrl: URL! $password: String!) {
+    customerReset(password: $id, resetUrl: $resetUrl) {
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
+      customerUserErrors {
         code
         field
         message
+      }
     }
   }
-}
 `;

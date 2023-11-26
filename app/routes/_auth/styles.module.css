@@ -1,0 +1,30 @@
+.root {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.header {
+  width: 100%;
+  height: 72px;
+  padding: 24px;
+}
+.header_logo {
+  width: 100px;
+  margin: 0 auto;
+  display: block;
+}
+.logo {
+  width: 100%;
+}
+.footer {
+  width: 100%;
+  height: 72px;
+  padding: 24px;
+}
+.footer_cr {
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}

@@ -1,0 +1,17 @@
+.main {
+  width: clamp(0px, 100%, 600px);
+  padding: 40px 24px;
+  margin: 0px auto;
+}
+.reset_title {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+}
+.error {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--red);
+}

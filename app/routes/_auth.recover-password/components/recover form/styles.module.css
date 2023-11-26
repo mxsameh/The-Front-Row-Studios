@@ -1,4 +1,4 @@
-.reset_form {
+.recover_form {
   width: clamp(0px, 100%, 500px);
   margin: 40px auto 0;
   display: flex;
@@ -11,7 +11,7 @@
   border: 1px solid black;
   border-radius: 50px;
 }
-.reset_btn {
+.submitBtn {
   padding: 10px 8px;
   color: white;
   background-color: black;

@@ -39,7 +39,7 @@ const LoginPage = () => {
             className={styles.input}
           />
         </fieldset>
-        <Link to="/reset-password" className={styles.forgotPass}>
+        <Link to="/recover-password" className={styles.forgotPass}>
           Forgot your password?
         </Link>
 

@@ -2,21 +2,23 @@ import {Form, useActionData} from '@remix-run/react';
 import styles from './styles.module.css';
 import classNames from 'classnames';
 
-const Recover = () => {
+const Activate = () => {
   const actionData = useActionData() as any;
   const error = actionData?.error;
+
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>RESET PASSWORD</h1>
-      <p className={styles.introText}>Create a new password for you account</p>
-
+      <h1 className={styles.title}>WELCOME TO THE FRONT ROW</h1>
+      <p className={styles.introText}>
+        Create your password to activate your account
+      </p>
       <Form method="POST" className={styles.form}>
         <fieldset className={styles.fieldset}>
           <input
             id="password"
             name="password"
             type="password"
-            placeholder="Enter new password"
+            placeholder="Enter password"
             aria-label="Password"
             minLength={6}
             required
@@ -30,10 +32,10 @@ const Recover = () => {
           type="submit"
           className={classNames(styles.submitBtn, 'animated-btn')}
         >
-          Update Password
+          Save
         </button>
       </Form>
     </main>
   );
 };
-export default Recover;
+export default Activate;

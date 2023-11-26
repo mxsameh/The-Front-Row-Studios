@@ -20,6 +20,10 @@ export const action: ActionFunction = async ({
   params: {id, activationToken},
 }) => {
   const {session, storefront} = context;
+  const {searchParams} = new URL(request.url);
+  const activationUrl = searchParams.get('activationUrl');
+
+  // Verify request params (id, activation token)
   if (
     !id ||
     !activationToken ||
@@ -38,7 +42,7 @@ export const action: ActionFunction = async ({
   // Validate password
   if (!password || typeof password !== 'string') {
     return badRequest({
-      formError: 'Please provide matching passwords',
+      error: 'Please provide strong password',
     });
   }
 
@@ -46,11 +50,8 @@ export const action: ActionFunction = async ({
   try {
     const data = await storefront.mutate(CUSTOMER_ACTIVATE_MUTATION, {
       variables: {
-        id: `gid://shopify/Customer/${id}`,
-        input: {
-          password,
-          activationToken,
-        },
+        activationUrl,
+        password,
       },
     });
 
@@ -70,6 +71,8 @@ export const action: ActionFunction = async ({
       },
     });
   } catch (error: any) {
+    console.log(error, error.message);
+
     if (storefront.isApiError(error)) {
       return badRequest({
         error: 'Something went wrong. Please try again later.',
@@ -91,8 +94,8 @@ export default function index() {
 }
 
 const CUSTOMER_ACTIVATE_MUTATION = `#graphql
-  mutation customerActivate($id: ID!, $input: CustomerActivateInput!) {
-    customerActivate(id: $id, input: $input) {
+  mutation customerActivate($activationUrl: URL!, $password: String!) {
+    customerActivateByUrl(activationUrl: $activationUrl, password: $password) {
       customerAccessToken {
         accessToken
         expiresAt

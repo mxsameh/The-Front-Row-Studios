@@ -1,9 +1,9 @@
 import styles from './styles.module.css';
 import {Form} from '@remix-run/react';
 
-const ResetForm = () => {
+const RecoverForm = () => {
   return (
-    <Form method="POST" className={styles.reset_form}>
+    <Form method="POST" className={styles.recover_form}>
       <input
         type="email"
         name="email"
@@ -11,10 +11,10 @@ const ResetForm = () => {
         required
         className={styles.email_input}
       />
-      <button type="submit" className={styles.reset_btn}>
+      <button type="submit" className={styles.submitBtn}>
         reset password
       </button>
     </Form>
   );
 };
-export default ResetForm;
+export default RecoverForm;

@@ -2,9 +2,9 @@ import styles from './styles.module.css';
 import {Link} from '@remix-run/react';
 import Success_icon from '~/icons/Success_icon';
 
-const ResetSuccess = () => {
+const RecoverSuccess = () => {
   return (
-    <div className={styles.reset_success}>
+    <div className={styles.recover_success}>
       <div className={styles.success}>
         <Success_icon className={styles.success_icon} />
         <p className={styles.success_text}>
@@ -19,4 +19,4 @@ const ResetSuccess = () => {
   );
 };
 
-export default ResetSuccess;
+export default RecoverSuccess;
