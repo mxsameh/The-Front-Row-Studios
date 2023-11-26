@@ -25,6 +25,7 @@ export const action: ActionFunction = async ({
 }: ActionFunctionArgs) => {
   const {searchParams} = new URL(request.url);
   const resetUrl = searchParams.get('resetUrl');
+  console.log(resetUrl);
 
   if (!resetUrl || typeof resetUrl !== 'string') {
     return badRequest({
@@ -39,7 +40,7 @@ export const action: ActionFunction = async ({
   // Verify password
   if (!password || typeof password !== 'string') {
     return badRequest({
-      error: 'Please provide matching passwords',
+      error: 'Please provide strong password',
     });
   }
 
@@ -54,9 +55,9 @@ export const action: ActionFunction = async ({
     });
 
     // Something is wrong with the user's input.
-    const {accessToken} = data?.customerReset?.customerAccessToken ?? {};
+    const {accessToken} = data?.customerResetByUrl?.customerAccessToken ?? {};
     if (!accessToken) {
-      throw new Error(data?.customerReset?.customerUserErrors.join(', '));
+      throw new Error(data?.customerResetByUrl?.customerUserErrors.join(', '));
     }
 
     // Reset succeded
@@ -93,7 +94,7 @@ export default function index() {
 
 const CUSTOMER_RESET_MUTATION = `#graphql
   mutation customerResetByUrl($resetUrl: URL! $password: String!) {
-    customerReset(password: $id, resetUrl: $resetUrl) {
+    customerResetByUrl(resetUrl: $resetUrl, password: $password) {
       customerAccessToken {
         accessToken
         expiresAt

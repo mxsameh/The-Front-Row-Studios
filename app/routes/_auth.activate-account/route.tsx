@@ -55,11 +55,14 @@ export const action: ActionFunction = async ({
       },
     });
 
-    const {accessToken} = data?.customerActivate?.customerAccessToken ?? {};
+    const {accessToken} =
+      data?.customerActivateByUrl?.customerAccessToken ?? {};
 
     // Something is wrong with the user's input.
     if (!accessToken) {
-      throw new Error(data?.customerActivate?.customerUserErrors.join(', '));
+      throw new Error(
+        data?.customerActivateByUrl?.customerUserErrors.join(', '),
+      );
     }
 
     // Add session token
@@ -94,7 +97,7 @@ export default function index() {
 }
 
 const CUSTOMER_ACTIVATE_MUTATION = `#graphql
-  mutation customerActivate($activationUrl: URL!, $password: String!) {
+  mutation customerActivateByUrl($activationUrl: URL!, $password: String!) {
     customerActivateByUrl(activationUrl: $activationUrl, password: $password) {
       customerAccessToken {
         accessToken
