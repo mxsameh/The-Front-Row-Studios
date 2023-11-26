@@ -8,7 +8,18 @@ interface Iprops {
 }
 
 const Product_Page = ({product}: Iprops) => {
-  let {images, options, price, availableForSale, selectedOptions} = product;
+  let {
+    title,
+    description,
+    descriptionHtml,
+    images,
+    options,
+    price,
+    availableForSale,
+    selectedOptions,
+  } = product;
+
+  console.log('dksd', descriptionHtml);
 
   return (
     <>
@@ -18,7 +29,7 @@ const Product_Page = ({product}: Iprops) => {
           {/**
            * Product Title
            */}
-          <h2 className={styles.product_title}>{product.title}</h2>
+          <h2 className={styles.product_title}>{title}</h2>
           {/**
            * Product Description
            */}
@@ -27,9 +38,11 @@ const Product_Page = ({product}: Iprops) => {
               <h3 className={styles.info_title}>description</h3>
             </div>
             <div className={styles.info_rightWrapper}>
-              <p className={styles.product_description}>
-                {product.description}
-              </p>
+              {/* <p className={styles.product_description}>{description}</p> */}
+              <div
+                className={styles.product_description}
+                dangerouslySetInnerHTML={{__html: descriptionHtml}}
+              />
             </div>
           </div>
 

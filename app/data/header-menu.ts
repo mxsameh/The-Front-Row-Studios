@@ -1,2 +1,8 @@
-export const headerLeftCategories = ['Tops', 'Skirts', 'Sets', 'Dresses'];
-export const headerRightCategories = ['Essentials', 'Outerwear'];
+export const headerLeftCategories = [
+  'Tops',
+  'Skirts',
+  'Sets',
+  'Dresses',
+  'OuterWear',
+];
+export const headerRightCategories = ['Essentials', 'Star Products'];

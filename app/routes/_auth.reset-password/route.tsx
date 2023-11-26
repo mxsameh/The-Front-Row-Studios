@@ -63,7 +63,7 @@ export const action: ActionFunction = async ({
     // Reset succeded
     session.set('customerAccessToken', accessToken);
 
-    return redirect('/account', {
+    return redirect('/', {
       headers: {
         'Set-Cookie': await session.commit(),
       },

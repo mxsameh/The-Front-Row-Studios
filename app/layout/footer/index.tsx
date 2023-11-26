@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
         <div className={styles.footer_cr}>
           <span className={styles.footer_crYear}>© 2023</span>
-          <span>the front rows studios</span>
+          <span>THE FRONT ROW STUDIOS</span>
         </div>
       </div>
     </footer>

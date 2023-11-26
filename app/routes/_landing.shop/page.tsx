@@ -10,7 +10,7 @@ const ShopPage = (props) => {
   useEffect(() => {
     let category =
       searchParams.get('Category') || searchParams.get('category')!;
-    category = category?.toLocaleLowerCase();
+    category = category?.toLocaleLowerCase().replaceAll('-', ' ');
     const categorySection = document.getElementById(category!);
     categorySection?.scrollIntoView(true);
   }, [searchParams]);

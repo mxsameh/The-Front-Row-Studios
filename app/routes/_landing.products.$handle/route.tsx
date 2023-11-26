@@ -47,6 +47,7 @@ query PRODUCT_BY_HANDLE($handle: String, $selectedOptions: [SelectedOptionInput!
   product(handle: $handle) {
     title
     description
+    descriptionHtml
     images(first: 6) {
       nodes {
         url

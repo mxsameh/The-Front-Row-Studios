@@ -1,10 +1,15 @@
-import {LoaderArgs, redirect, json, ActionArgs} from '@shopify/remix-oxygen';
+import {
+  redirect,
+  json,
+  LoaderFunctionArgs,
+  ActionFunctionArgs,
+} from '@shopify/remix-oxygen';
 import LoginPage from './page';
 
 /**
  * Loader
  */
-export async function loader({context}: LoaderArgs) {
+export async function loader({context}: LoaderFunctionArgs) {
   const {session} = context;
   const customerAccessToken = await session.get('customerAccessToken');
   if (customerAccessToken) {
@@ -16,7 +21,7 @@ export async function loader({context}: LoaderArgs) {
 /**
  * Actoin
  */
-export async function action({context, request}: ActionArgs) {
+export async function action({context, request}: ActionFunctionArgs) {
   const {session, storefront} = context;
 
   if (request.method !== 'POST') {

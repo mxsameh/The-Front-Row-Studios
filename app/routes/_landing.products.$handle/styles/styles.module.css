@@ -27,9 +27,10 @@
   margin-top: auto;
   text-transform: uppercase;
   font-size: 20px;
-  font-weight: 600;
-  font-style: italic;
+  font-weight: bold;
+  /* font-style: italic; */
   text-align: center;
+  font-family: 'Clash Display';
 }
 .info {
   display: flex;
@@ -56,8 +57,13 @@
 }
 .product_description {
   font-size: 14px;
-  font-style: italic;
+  /* font-style: italic; */
   color: #333;
+  text-align: justify;
+  font-family: 'Clash Display';
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .product_extraInfo {
   color: #333;
