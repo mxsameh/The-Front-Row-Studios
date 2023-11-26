@@ -14,22 +14,13 @@ export const meta: MetaFunction = () => {
 /**
  * Action
  */
-export const action: ActionFunction = async ({
-  request,
-  context,
-  params: {id, activationToken},
-}) => {
+export const action: ActionFunction = async ({request, context}) => {
   const {session, storefront} = context;
   const {searchParams} = new URL(request.url);
   const activationUrl = searchParams.get('activationUrl');
 
   // Verify request params (id, activation token)
-  if (
-    !id ||
-    !activationToken ||
-    typeof id !== 'string' ||
-    typeof activationToken !== 'string'
-  ) {
+  if (!activationUrl || typeof activationUrl !== 'string') {
     return badRequest({
       error: 'Wrong token. The link you followed might be wrong.',
     });
@@ -55,18 +46,18 @@ export const action: ActionFunction = async ({
       },
     });
 
-    const {accessToken} =
-      data?.customerActivateByUrl?.customerAccessToken ?? {};
+    const customerAccessToken =
+      data?.customerActivateByUrl?.customerAccessToken;
 
     // Something is wrong with the user's input.
-    if (!accessToken) {
+    if (!customerAccessToken.accessToken) {
       throw new Error(
         data?.customerActivateByUrl?.customerUserErrors.join(', '),
       );
     }
 
     // Add session token
-    session.set('customerAccessToken', accessToken);
+    session.set('customerAccessToken', customerAccessToken);
 
     return redirect('/account', {
       headers: {

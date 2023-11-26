@@ -19,7 +19,6 @@ const Product_Page = ({product}: Iprops) => {
     selectedOptions,
   } = product;
 
-  console.log('dksd', descriptionHtml);
 
   return (
     <>

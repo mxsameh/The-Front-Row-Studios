@@ -34,10 +34,8 @@ export async function action({request, context}: ActionFunctionArgs) {
       session.set('customerAccessToken', customerAccessToken);
     }
 
-    console.log('updated successfully');
     return json({customer}, {headers: {'Set-Cookie': await session.commit()}});
   } catch (error: any) {
-    console.log(error.message);
     return json({error: error.message, customer: null}, {status: 400});
   }
 }

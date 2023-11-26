@@ -91,7 +91,6 @@ export async function action({request, context}: ActionFunctionArgs) {
       },
     });
   } catch (error) {
-    console.log(error);
     if (error instanceof Error)
       return json({error: error.message}, {status: 400});
     else return json({error}, {status: 400});

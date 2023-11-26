@@ -12,10 +12,8 @@ import LoginPage from './page';
 export async function loader({context}: LoaderFunctionArgs) {
   const {session} = context;
   const customerAccessToken = await session.get('customerAccessToken');
-  if (customerAccessToken) {
-    return redirect('/account');
-  }
-  return null;
+  if (customerAccessToken?.accessToken) return redirect('/account');
+  else return null;
 }
 
 /**
@@ -53,10 +51,7 @@ export async function action({context, request}: ActionFunctionArgs) {
       customerAccessTokenCreate || {};
 
     if (!customerAccessToken) {
-      //   throw new Error('Email or password are incorrect!');
-      throw new Error(
-        customerUserErrors[0].message || 'Please contact support',
-      );
+      throw new Error('Email or password are incorrect!');
     }
     session.set('customerAccessToken', customerAccessToken);
 

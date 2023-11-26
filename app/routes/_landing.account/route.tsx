@@ -1,9 +1,23 @@
 import styles from './styles.module.css';
 import {Outlet} from '@remix-run/react';
-import {ActionFunctionArgs, redirect} from '@shopify/remix-oxygen';
+import {
+  ActionFunctionArgs,
+  LoaderFunction,
+  redirect,
+} from '@shopify/remix-oxygen';
 import {useContext} from 'react';
 import {ICustomerContext, customerContext} from '~/context/customerContext';
 import Navigation from './components/navigation';
+
+/**
+ * Loader
+ */
+export const loader: LoaderFunction = async ({context}) => {
+  const {session} = context;
+  const customerAccessToken = await session.get('customerAccessToken');
+  if (!customerAccessToken?.accessToken) return redirect('/login');
+  else return null;
+};
 
 /**
  * Actions

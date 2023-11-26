@@ -25,7 +25,6 @@ export const action: ActionFunction = async ({
 }: ActionFunctionArgs) => {
   const {searchParams} = new URL(request.url);
   const resetUrl = searchParams.get('resetUrl');
-  console.log(resetUrl);
 
   if (!resetUrl || typeof resetUrl !== 'string') {
     return badRequest({
@@ -55,13 +54,13 @@ export const action: ActionFunction = async ({
     });
 
     // Something is wrong with the user's input.
-    const {accessToken} = data?.customerResetByUrl?.customerAccessToken ?? {};
-    if (!accessToken) {
+    const customerAccessToken = data?.customerResetByUrl?.customerAccessToken;
+    if (!customerAccessToken.accessToken) {
       throw new Error(data?.customerResetByUrl?.customerUserErrors.join(', '));
     }
 
     // Reset succeded
-    session.set('customerAccessToken', accessToken);
+    session.set('customerAccessToken', customerAccessToken);
 
     return redirect('/', {
       headers: {
