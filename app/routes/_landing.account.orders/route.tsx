@@ -1,12 +1,19 @@
-import {LoaderArgs, json} from '@shopify/remix-oxygen';
+import {LoaderFunctionArgs, json} from '@shopify/remix-oxygen';
 import Orders from './page';
 import {useLoaderData} from '@remix-run/react';
 
 /**
  * Loader
  */
-export async function loader({context}: LoaderArgs) {
-  const {customer} = await context.storefront.query(ORDERS_QUERY);
+export async function loader({context}: LoaderFunctionArgs) {
+  const {session} = context;
+  const customerAccessToken = await session.get('customerAccessToken');
+
+  const {customer} = await context.storefront.query(ORDERS_QUERY, {
+    variables: {
+      customerAccessToken: customerAccessToken.accessToken,
+    },
+  });
 
   return json({orders: customer.orders.nodes});
 }
@@ -15,7 +22,7 @@ export async function loader({context}: LoaderArgs) {
  * Route
  */
 export default function index() {
-  const {orders} = useLoaderData();
+  const {orders} = useLoaderData() || ({} as any);
   return <Orders orders={orders} />;
 }
 
@@ -23,8 +30,8 @@ export default function index() {
  * QUERIES
  */
 const ORDERS_QUERY = `#graphql
-  query ORDERS{
-    customer(customerAccessToken: "028c88a8428c18fe8e565208f4530e95") {
+  query ORDERS($customerAccessToken:String!){
+    customer(customerAccessToken: $customerAccessToken) {
       orders(first:2){
         nodes{
           fulfillmentStatus

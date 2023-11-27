@@ -1,18 +1,18 @@
 import OrdersTable from './components/orders table';
+import styles from './styles.module.css';
 
 const Orders = (props) => {
   const {orders} = props;
+  const hasOrders = orders.length ? true : false;
+  console.log(hasOrders);
 
   return (
     <>
-      {/* <p className={styles.introText}>
-        Your current and previous orders.
-        <br />
-        Note: inorder to Edit/Cancel and order you’ll have to contact the
-        customer service.
-      </p> */}
-
-      <OrdersTable orders={orders} />
+      {hasOrders ? (
+        <OrdersTable orders={orders} />
+      ) : (
+        <h3 className={styles.noOrdersTitle}>You don't have any orders yet!</h3>
+      )}
     </>
   );
 };
