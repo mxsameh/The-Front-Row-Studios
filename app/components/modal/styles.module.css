@@ -1,0 +1,31 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+}
+.modal_wrapper {
+  width: clamp(0px, 100%, 600px);
+  aspect-ratio: 2/1;
+  background: white;
+  padding: 16px 24px;
+}
+.modal_header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.modal_title {
+  font-size: 20px;
+}
+.modal_closeIcon {
+  width: 28px;
+  cursor: pointer;
+}
+.modal_content {
+    margin-top: 24px;
+  font-size: 16px;
+}

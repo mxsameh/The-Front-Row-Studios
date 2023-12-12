@@ -5,7 +5,8 @@ import classNames from 'classnames';
 import LoadingLine from '~/components/loading line';
 import removeTrailingZeros from '~/utils/removeTrailingZeros';
 
-const AddToCart = ({price, productId, available}) => {
+const AddToCart = (props) => {
+const {price, productId, available, preOrder} = props
   let {amount, currencyCode} = price;
 
   amount = removeTrailingZeros(amount).toLocaleString();
@@ -46,7 +47,7 @@ const AddToCart = ({price, productId, available}) => {
               type="button"
               onClick={addProductToCart}
             >
-              Add to Bag
+              {preOrder?'Pre Order':'Add to Bag'}
               <span
                 className={styles.product_price}
               >{`${amount} ${currencyCode}`}</span>

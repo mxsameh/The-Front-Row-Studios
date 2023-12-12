@@ -13,7 +13,9 @@ body {
 *[data-z-index='1'] {
   z-index: 1;
 }
-
+.disable-scroll{
+  overflow: hidden;
+}
 .hide-scrollbar {
   overflow: auto;
   scrollbar-width: none; /* For Firefox */

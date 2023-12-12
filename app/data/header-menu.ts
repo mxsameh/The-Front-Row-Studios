@@ -3,6 +3,6 @@ export const headerLeftCategories = [
   'Skirts',
   'Sets',
   'Dresses',
-  'OuterWear',
+  'Outerwear',
 ];
 export const headerRightCategories = ['Essentials', 'Star Products'];

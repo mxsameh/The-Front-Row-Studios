@@ -16,6 +16,7 @@ const menuImages = [
   {category: 'Sets', img: setsImage},
   {category: 'Skirts', img: skirtsImage},
   {category: 'Outerwear', img: outerwearImage},
+  {category: 'Star Products', img: outerwearImage},
   {category: 'Essentials', img: essentialsImage},
 ];
 

@@ -1,6 +1,6 @@
 const formatProduct = (product: any) => {
   if (!product) return null;
-  const {title, description, descriptionHtml, options, images, variants} =
+  const {title, tags, description, descriptionHtml, options, images, variants} =
     product;
 
   /** Get Selected Variant */
@@ -48,6 +48,7 @@ const formatProduct = (product: any) => {
     title,
     description,
     descriptionHtml: descriptionHtml || null,
+    tags,
     images: images.nodes,
     price: selectedVariant?.price,
     options: formatedOptions,

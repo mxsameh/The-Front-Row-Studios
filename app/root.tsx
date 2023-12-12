@@ -27,6 +27,7 @@ import swiperStyles from './styles/swiper.css';
 // import {Layout} from '~/components/Layout';
 import {cssBundleHref} from '@remix-run/css-bundle';
 import CustomerProvider from './context/customerContext';
+import ModalContextProvider from './context/modalContext';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -49,6 +50,9 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
   return false;
 };
 
+/**
+ * LINKS
+ */
 export function links() {
   return [
     ...(cssBundleHref ? [{rel: 'stylesheet', href: cssBundleHref}] : []),
@@ -101,6 +105,12 @@ export async function loader({context}: LoaderFunctionArgs) {
     loggedInCustomer = customer;
   }
 
+  const data = await storefront.query(POLICIES_QUERY);
+  const shop = data?.shop;
+  const shippingPolicy = shop?.shippingPolicy?.body;
+  const refundPolicy = shop?.refundPolicy?.body;
+  const policies = {shippingPolicy, refundPolicy};
+
   // defer the cart query by not awaiting it
   const cartPromise = cart.get();
 
@@ -126,6 +136,7 @@ export async function loader({context}: LoaderFunctionArgs) {
       // footer: footerPromise,
       // header: await headerPromise,
       customer: loggedInCustomer,
+      policies,
       // isLoggedIn,
       publicStoreDomain,
     },
@@ -139,7 +150,7 @@ export async function loader({context}: LoaderFunctionArgs) {
 export default function App() {
   const nonce = useNonce();
   const data = useLoaderData<typeof loader>();
-  const {customer, cart} = data || {};
+  const {customer, cart, policies} = data || {};
 
   return (
     <html lang="en">
@@ -151,7 +162,9 @@ export default function App() {
       </head>
       <body>
         <CustomerProvider customerData={customer}>
-          <Outlet context={{cart}} />
+          <ModalContextProvider>
+            <Outlet context={{cart, policies}} />
+          </ModalContextProvider>
         </CustomerProvider>
         <ScrollRestoration nonce={nonce} />
         <Scripts nonce={nonce} />
@@ -325,6 +338,20 @@ const CUSTOMER_QUERY = `#graphql
         country
         zip
         id
+      }
+    }
+  }
+`;
+
+const POLICIES_QUERY = `#graphql
+  query POLICIES {
+    shop {
+      name
+      shippingPolicy {
+        body
+      }
+      refundPolicy {
+        body
       }
     }
   }

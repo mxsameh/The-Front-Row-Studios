@@ -11,6 +11,7 @@ const Product_Page = ({product}: Iprops) => {
   let {
     title,
     description,
+    tags,
     descriptionHtml,
     images,
     options,
@@ -19,6 +20,9 @@ const Product_Page = ({product}: Iprops) => {
     selectedOptions,
   } = product;
 
+  // console.log(tags);
+
+  const preOrder = tags.includes('Pre Order');
 
   return (
     <>
@@ -37,7 +41,6 @@ const Product_Page = ({product}: Iprops) => {
               <h3 className={styles.info_title}>description</h3>
             </div>
             <div className={styles.info_rightWrapper}>
-              {/* <p className={styles.product_description}>{description}</p> */}
               <div
                 className={styles.product_description}
                 dangerouslySetInnerHTML={{__html: descriptionHtml}}
@@ -58,6 +61,7 @@ const Product_Page = ({product}: Iprops) => {
             price={price}
             productId={product.id}
             available={availableForSale}
+            preOrder={preOrder}
           />
 
           {/**
