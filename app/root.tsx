@@ -24,7 +24,6 @@ import indexStyles from './styles/index.css';
 import globalStyles from './styles/global.css';
 import swiperStyles from './styles/swiper.css';
 
-// import {Layout} from '~/components/Layout';
 import {cssBundleHref} from '@remix-run/css-bundle';
 import CustomerProvider from './context/customerContext';
 
@@ -49,6 +48,9 @@ export const shouldRevalidate: ShouldRevalidateFunction = ({
   return false;
 };
 
+/**
+ * Links
+ */
 export function links() {
   return [
     ...(cssBundleHref ? [{rel: 'stylesheet', href: cssBundleHref}] : []),
@@ -161,6 +163,9 @@ export default function App() {
   );
 }
 
+/**
+ * Error Boundary
+ */
 export function ErrorBoundary() {
   const error = useRouteError();
   const rootData = useRootLoaderData();
@@ -239,6 +244,9 @@ async function validateCustomerAccessToken(
   return {isLoggedIn, headers};
 }
 
+/**
+ * Queries
+ */
 const MENU_FRAGMENT = `#graphql
   fragment MenuItem on MenuItem {
     id

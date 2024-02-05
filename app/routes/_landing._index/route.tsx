@@ -7,10 +7,12 @@ import HomePage from './page';
  */
 export async function loader({context}: LoaderFunctionArgs) {
   const {products} = await context.storefront.query(PRODUCTS_QUERY);
-
   return json({products: products.nodes});
 }
 
+/**
+ * Route
+ */
 export default function index() {
   const {products} = useLoaderData() || ({} as any);
   return <HomePage products={products} />;

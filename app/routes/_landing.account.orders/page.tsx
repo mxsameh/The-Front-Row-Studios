@@ -4,8 +4,6 @@ import styles from './styles.module.css';
 const Orders = (props) => {
   const {orders} = props;
   const hasOrders = orders.length ? true : false;
-  console.log(hasOrders);
-
   return (
     <>
       {hasOrders ? (
